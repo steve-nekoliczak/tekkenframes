@@ -1,5 +1,6 @@
 defmodule TekkenframesWeb.Router do
   use TekkenframesWeb, :router
+  use Kaffy.Routes, scope: "/admin", pipe_through: []
 
   pipeline :browser do
     plug :accepts, ["html"]
