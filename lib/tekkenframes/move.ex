@@ -23,7 +23,7 @@ defmodule Tekkenframes.Move do
     move
     |> cast(attrs, [:character_id, :input, :hit_level, :damage, :start_up_frame, :on_block_frame, :on_hit_frame, :on_counter_hit_frame, :notes, :version])
     |> validate_required([:character_id, :input, :hit_level, :damage, :start_up_frame, :on_block_frame, :on_hit_frame, :on_counter_hit_frame, :version])
-    |> validate_format(:input, move_regex())
+    |> validate_format(:input, move_regex)
     # TODO add more regex validations per field here
   end
 
