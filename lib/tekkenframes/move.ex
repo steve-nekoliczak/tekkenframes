@@ -13,6 +13,7 @@ defmodule Tekkenframes.Move do
     field :on_counter_hit_frame, :string
     field :on_hit_frame, :string
     field :start_up_frame, :string
+    field :version, :string
 
     timestamps()
   end
@@ -20,8 +21,8 @@ defmodule Tekkenframes.Move do
   @doc false
   def changeset(move, attrs) do
     move
-    |> cast(attrs, [:character_id, :input, :hit_level, :damage, :start_up_frame, :on_block_frame, :on_hit_frame, :on_counter_hit_frame, :notes])
-    |> validate_required([:character_id, :input, :hit_level, :damage, :start_up_frame, :on_block_frame, :on_hit_frame, :on_counter_hit_frame])
+    |> cast(attrs, [:character_id, :input, :hit_level, :damage, :start_up_frame, :on_block_frame, :on_hit_frame, :on_counter_hit_frame, :notes, :version])
+    |> validate_required([:character_id, :input, :hit_level, :damage, :start_up_frame, :on_block_frame, :on_hit_frame, :on_counter_hit_frame, :version])
     |> validate_format(:input, move_regex())
     # TODO add more regex validations per field here
   end
