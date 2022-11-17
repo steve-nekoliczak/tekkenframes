@@ -1,6 +1,7 @@
 defmodule Tekkenframes.Move do
   use Ecto.Schema
   import Ecto.Changeset
+  import Tekkenframes.RegexHelper, only: [move_regex: 0]
 
   schema "moves" do
     belongs_to :character, Tekkenframes.Character
@@ -19,9 +20,10 @@ defmodule Tekkenframes.Move do
   @doc false
   def changeset(move, attrs) do
     move
-    |> cast(attrs, [:input, :hit_level, :damage, :start_up_frame, :on_block_frame, :on_hit_frame, :on_counter_hit_frame, :notes])
-    |> validate_required([:input, :hit_level, :damage, :start_up_frame, :on_block_frame, :on_hit_frame, :on_counter_hit_frame])
-    # TODO add regex validations per field here
+    |> cast(attrs, [:character_id, :input, :hit_level, :damage, :start_up_frame, :on_block_frame, :on_hit_frame, :on_counter_hit_frame, :notes])
+    |> validate_required([:character_id, :input, :hit_level, :damage, :start_up_frame, :on_block_frame, :on_hit_frame, :on_counter_hit_frame])
+    |> validate_format(:input, move_regex())
+    # TODO add more regex validations per field here
   end
 
 end
