@@ -3,5 +3,6 @@ defmodule Tekkenframes.Character do
 
   schema "characters" do
     field :name, :string
+    has_many :moves, Tekkenframes.Move
   end
 end

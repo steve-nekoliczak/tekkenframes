@@ -25,6 +25,7 @@ defmodule TekkenframesWeb.Router do
     pipe_through :api
 
     get "/:game/:character", CharacterController, :index
+    get "/:game/:character/:move", MoveController, :index
   end
 
   # Other scopes may use custom stacks.
