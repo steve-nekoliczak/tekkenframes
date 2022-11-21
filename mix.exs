@@ -49,7 +49,8 @@ defmodule Tekkenframes.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:kaffy, "~> 0.9.2"}
+      {:kaffy, "~> 0.9.2"},
+      {:csv, "~> 3.0.4"}
     ]
   end
 
