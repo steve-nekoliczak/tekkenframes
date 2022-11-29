@@ -8,7 +8,8 @@ import Config
 config :tekkenframes, Tekkenframes.Repo,
   username: "postgres",
   password: "postgres",
-  hostname: "localhost",
+  # hostname is name of database service in docker-compose.yml
+  hostname: "db",
   database: "tekkenframes_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
