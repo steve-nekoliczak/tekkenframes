@@ -13,6 +13,10 @@ defmodule Tekkenframes.Move do
     field :on_counter_hit_frame, :string
     field :on_hit_frame, :string
     field :start_up_frame, :string
+    field :on_block_notes, :string
+    field :on_counter_hit_notes, :string
+    field :on_hit_notes, :string
+    field :start_up_notes, :string
     field :version, :string
 
     timestamps()
@@ -21,8 +25,8 @@ defmodule Tekkenframes.Move do
   @doc false
   def changeset(move, attrs) do
     move
-    |> cast(attrs, [:character_id, :input, :hit_level, :damage, :start_up_frame, :on_block_frame, :on_hit_frame, :on_counter_hit_frame, :notes, :version])
-    |> validate_required([:character_id, :input, :hit_level, :damage, :start_up_frame, :on_block_frame, :on_hit_frame, :on_counter_hit_frame, :version])
+    |> cast(attrs, cast_fields)
+    |> validate_required(validate_required_fields)
     |> validate_format(:input, input_regex)
     |> validate_format(:damage, damage_regex)
     |> validate_format(:hit_level, hit_level_regex)
@@ -30,6 +34,39 @@ defmodule Tekkenframes.Move do
     |> validate_format(:on_counter_hit_frame, frame_regex)
     |> validate_format(:on_hit_frame, frame_regex)
     |> validate_format(:start_up_frame, start_up_regex)
+  end
+
+  def cast_fields do
+    [
+      :character_id,
+      :input,
+      :hit_level,
+      :damage,
+      :start_up_frame,
+      :on_block_frame,
+      :on_hit_frame,
+      :on_counter_hit_frame,
+      :notes,
+      :on_block_notes,
+      :on_counter_hit_notes,
+      :on_hit_notes,
+      :start_up_notes,
+      :version
+    ]
+  end
+
+  def validate_required_fields do
+    [
+      :character_id,
+      :input,
+      :hit_level,
+      :damage,
+      :start_up_frame,
+      :on_block_frame,
+      :on_hit_frame,
+      :on_counter_hit_frame,
+      :version
+    ]
   end
 
 end
