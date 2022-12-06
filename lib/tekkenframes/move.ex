@@ -2,8 +2,7 @@ defmodule Tekkenframes.Move do
   use Ecto.Schema
   import Ecto.Changeset
 
-  import Tekkenframes.RegexHelper,
-    only: [input_regex: 0, damage_regex: 0, hit_level_regex: 0, frame_regex: 0, start_up_regex: 0]
+  alias Tekkenframes.RegexHelper, as: Regex
 
   schema "moves" do
     belongs_to :character, Tekkenframes.Character
@@ -29,13 +28,13 @@ defmodule Tekkenframes.Move do
     move
     |> cast(attrs, cast_fields())
     |> validate_required(validate_required_fields())
-    |> validate_format(:input, input_regex())
-    |> validate_format(:damage, damage_regex())
-    |> validate_format(:hit_level, hit_level_regex())
-    |> validate_format(:on_block_frame, frame_regex())
-    |> validate_format(:on_counter_hit_frame, frame_regex())
-    |> validate_format(:on_hit_frame, frame_regex())
-    |> validate_format(:start_up_frame, start_up_regex())
+    |> validate_format(:input, Regex.input_regex())
+    |> validate_format(:damage, Regex.damage_regex())
+    |> validate_format(:hit_level, Regex.hit_level_regex())
+    |> validate_format(:on_block_frame, Regex.frame_regex())
+    |> validate_format(:on_counter_hit_frame, Regex.frame_regex())
+    |> validate_format(:on_hit_frame, Regex.frame_regex())
+    |> validate_format(:start_up_frame, Regex.start_up_regex())
   end
 
   def cast_fields do
