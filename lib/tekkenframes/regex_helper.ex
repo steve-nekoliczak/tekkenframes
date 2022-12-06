@@ -4,7 +4,7 @@ defmodule Tekkenframes.RegexHelper do
   @attack_input "(1|1\\+2|1\\+2\\+3|1\\+2\\+3\\+4|2|2\\+3|2\\+3\\+4|3|3\\+4|4)"
   @input_entry "(#{@move_input}|#{@attack_input}|#{@move_input}\\+#{@attack_input})"
   @input "(#{@stance} )?#{@input_entry}(, #{@input_entry})*"
-  def input_regex, do: ~r/^#{@move}$/
+  def input_regex, do: ~r/^#{@input}$/
 
   def damage_regex, do: ~r/^\d*(, \d*)*$/
 
