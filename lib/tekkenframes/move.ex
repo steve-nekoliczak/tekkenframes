@@ -1,7 +1,9 @@
 defmodule Tekkenframes.Move do
   use Ecto.Schema
   import Ecto.Changeset
-  import Tekkenframes.RegexHelper, only: [input_regex: 0, damage_regex: 0, hit_level_regex: 0, frame_regex: 0, start_up_regex: 0]
+
+  import Tekkenframes.RegexHelper,
+    only: [input_regex: 0, damage_regex: 0, hit_level_regex: 0, frame_regex: 0, start_up_regex: 0]
 
   schema "moves" do
     belongs_to :character, Tekkenframes.Character
@@ -68,5 +70,4 @@ defmodule Tekkenframes.Move do
       :version
     ]
   end
-
 end

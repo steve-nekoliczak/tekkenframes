@@ -17,9 +17,9 @@ defmodule TekkenframesWeb.CharacterController do
   def get_values(path) do
     # TODO move to model, add moves to database, return errors
     Path.expand(path)
-    |> File.stream!
+    |> File.stream!()
     |> CSV.decode(headers: true)
-    |> Enum.map(fn (move) ->
+    |> Enum.map(fn move ->
       {:ok, fields} = move
       IO.inspect(move, label: "move")
       # |> Repo.insert

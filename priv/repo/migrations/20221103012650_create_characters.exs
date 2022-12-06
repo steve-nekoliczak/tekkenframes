@@ -5,6 +5,5 @@ defmodule Tekkenframes.Repo.Migrations.CreateCharacters do
     create table(:characters) do
       add :name, :string
     end
-
   end
 end
