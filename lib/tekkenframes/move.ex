@@ -27,15 +27,15 @@ defmodule Tekkenframes.Move do
   @doc false
   def changeset(move, attrs) do
     move
-    |> cast(attrs, cast_fields)
-    |> validate_required(validate_required_fields)
-    |> validate_format(:input, input_regex)
-    |> validate_format(:damage, damage_regex)
-    |> validate_format(:hit_level, hit_level_regex)
-    |> validate_format(:on_block_frame, frame_regex)
-    |> validate_format(:on_counter_hit_frame, frame_regex)
-    |> validate_format(:on_hit_frame, frame_regex)
-    |> validate_format(:start_up_frame, start_up_regex)
+    |> cast(attrs, cast_fields())
+    |> validate_required(validate_required_fields())
+    |> validate_format(:input, input_regex())
+    |> validate_format(:damage, damage_regex())
+    |> validate_format(:hit_level, hit_level_regex())
+    |> validate_format(:on_block_frame, frame_regex())
+    |> validate_format(:on_counter_hit_frame, frame_regex())
+    |> validate_format(:on_hit_frame, frame_regex())
+    |> validate_format(:start_up_frame, start_up_regex())
   end
 
   def cast_fields do
