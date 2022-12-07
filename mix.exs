@@ -52,6 +52,7 @@ defmodule Tekkenframes.MixProject do
       {:kaffy, "~> 0.9.2"},
       {:csv, "~> 3.0.4"},
       {:ex_machina, "~> 2.7.0"},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
     ]
   end
 
