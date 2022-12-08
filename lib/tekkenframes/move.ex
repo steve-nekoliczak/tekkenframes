@@ -1,4 +1,8 @@
 defmodule Tekkenframes.Move do
+  @moduledoc """
+  Model for characters' moves.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 

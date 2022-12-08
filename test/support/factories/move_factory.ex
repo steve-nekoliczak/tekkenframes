@@ -1,4 +1,7 @@
 defmodule Tekkenframes.MoveFactory do
+  @moduledoc """
+  Factory for the move model.
+  """
   use ExMachina.Ecto, repo: Tekkenframes.Repo
 
   defmacro __using__(_opts) do

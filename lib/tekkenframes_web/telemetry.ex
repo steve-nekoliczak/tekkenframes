@@ -1,4 +1,8 @@
 defmodule TekkenframesWeb.Telemetry do
+  @moduledoc """
+  Telemetry module supplied by phoenix.
+  """
+
   use Supervisor
   import Telemetry.Metrics
 
