@@ -5,16 +5,14 @@ defmodule Tekkenframes.MoveTest do
 
   describe "changeset/2" do
     test "succeeds when damage is a number" do
-      move = insert(:move)
-      changeset = Move.changeset(move, %{damage: "12"})
+      changeset = Move.changeset(insert(:move), %{damage: "12"})
 
       assert %{} = errors_on(changeset)
       assert changeset.valid?
     end
 
     test "fails when damage is not a number" do
-      move = insert(:move)
-      changeset = Move.changeset(move, %{damage: "a"})
+      changeset = Move.changeset(insert(:move), %{damage: "a"})
 
       assert %{damage: ["has invalid format"]} = errors_on(changeset)
       assert !changeset.valid?
