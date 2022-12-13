@@ -84,4 +84,55 @@ defmodule Tekkenframes.MoveTest do
       assert !changeset.valid?
     end
   end
+
+  describe "changeset/2: changing input" do
+    def attack_inputs do
+      ["1", "1+2", "1+2+3", "1+2+3+4", "1+3", "1+3+4", "1+4", "2", "2+3", "2+3+4", "2+4", "3", "3+4", "4"]
+    end
+
+    def move_inputs do
+      ["u", "u/f", "f", "d/f", "d", "d/b", "b", "u/b", "U", "U/F", "F", "D/F", "D", "D/B", "B", "U/B", "qcb", "qcf", "hcb", "hcf"]
+    end
+
+    def stances do
+      ["SS", "SSR", "SSL", "WS", "FC", "TC", "TJ"]
+    end
+
+    test "succeeds when input is any combination of ascending 1/2/3/4 with separating plus signs" do
+      for attack_input <- attack_inputs() do
+        changeset = Move.changeset(insert(:move), %{input: attack_input})
+        assert changeset.valid?
+      end
+    end
+
+    test "succeeds for all valid move inputs followed by a plus and an attack input" do
+      for move_input <- move_inputs() do
+        changeset = Move.changeset(insert(:move), %{input: "#{move_input}+1"})
+        assert changeset.valid?
+      end
+    end
+
+    test "succeeds for all valid stances followed by a space and an attack input" do
+      for stance <- stances() do
+        changeset = Move.changeset(insert(:move), %{input: "#{stance} 1"})
+        assert changeset.valid?
+      end
+    end
+
+    test "succeeds for all valid stances followed by a move input, plus, and an attack input" do
+      for stance <- stances() do
+        for move_input <- move_inputs() do
+          changeset = Move.changeset(insert(:move), %{input: "#{stance} #{move_input}+1"})
+          assert changeset.valid?
+        end
+      end
+    end
+
+    test "succeeds for ewgf" do
+      for attack_input <- attack_inputs() do
+        changeset = Move.changeset(insert(:move), %{input: "f, N, d, d/f+#{attack_input}"})
+        assert changeset.valid?
+      end
+    end
+  end
 end
