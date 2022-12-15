@@ -150,7 +150,7 @@ defmodule Tekkenframes.MoveTest do
 
     test "succeeds when *_frames is a negative number" do
       for frames_field <- frames_fields() do
-        changeset = Move.changeset(insert(:move), %{frames_field => "+20"})
+        changeset = Move.changeset(insert(:move), %{frames_field => "-20"})
         assert changeset.valid?
       end
     end
