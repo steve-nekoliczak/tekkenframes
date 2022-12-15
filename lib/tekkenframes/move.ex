@@ -14,14 +14,14 @@ defmodule Tekkenframes.Move do
     field :hit_level, :string
     field :input, :string
     field :notes, :string
-    field :on_block_frames, :string
-    field :on_counter_hit_frames, :string
-    field :on_hit_frames, :string
     field :start_up_frames, :string
-    field :on_block_effects, :string
-    field :on_counter_hit_effects, :string
-    field :on_hit_effects, :string
     field :start_up_effects, :string
+    field :on_block_frames, :string
+    field :on_block_effects, :string
+    field :on_hit_frames, :string
+    field :on_hit_effects, :string
+    field :on_counter_hit_frames, :string
+    field :on_counter_hit_effects, :string
     field :version, :string
 
     timestamps()
