@@ -16,7 +16,7 @@ defmodule Tekkenframes.RegexHelper do
   @hit_level_entry  "#{@hit_level}( \\(#{@stance}\\))?"
   def hit_level_regex, do: ~r/^(#{@hit_level_entry}(, #{@hit_level_entry})*\!?|\!)$/
 
-  @frames_entry      "(\\+|\-){1}\\d+"
+  @frames_entry      "((\\+|\-){1}\\d+|0)"
   def frames_regex, do: ~r/^(#{@frames_entry}(~#{@frames_entry})?)$/
 
   def start_up_regex, do: ~r/^\d+(~\d+)?$/
