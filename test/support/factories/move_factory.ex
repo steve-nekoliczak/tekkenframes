@@ -13,10 +13,10 @@ defmodule Tekkenframes.MoveFactory do
           damage: "10",
           hit_level: "h",
           input: "1",
-          on_block_frame: "+1",
-          on_counter_hit_frame: "-1",
-          on_hit_frame: "+2",
-          start_up_frame: "10",
+          on_block_frames: "+1",
+          on_counter_hit_frames: "-1",
+          on_hit_frames: "+2",
+          start_up_frames: "10",
           version: "5.00"
         }
       end
