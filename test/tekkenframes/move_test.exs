@@ -86,42 +86,34 @@ defmodule Tekkenframes.MoveTest do
   end
 
   describe "changeset/2: changing input" do
-    def attack_inputs do
-      ["1", "1+2", "1+2+3", "1+2+3+4", "1+3", "1+3+4", "1+4", "2", "2+3", "2+3+4", "2+4", "3", "3+4", "4"]
-    end
-
-    def move_inputs do
-      ["u", "u/f", "f", "d/f", "d", "d/b", "b", "u/b", "U", "U/F", "F", "D/F", "D", "D/B", "B", "U/B", "qcb", "qcf", "hcb", "hcf"]
-    end
-
-    def stances do
-      ["SS", "SSR", "SSL", "WS", "FC", "TC", "TJ"]
-    end
+    @attack_inputs ["1", "1+2", "1+2+3", "1+2+3+4", "1+3", "1+3+4", "1+4", "2", "2+3", "2+3+4", "2+4", "3", "3+4", "4"]
+    @move_inputs ["u", "u/f", "f", "d/f", "d", "d/b", "b", "u/b", "U", "U/F", "F", "D/F", "D", "D/B", "B", "U/B", "qcb", "qcf", "hcb", "hcf"]
+    @stances ["SS", "SSR", "SSL", "WS", "FC", "TC", "TJ"]
 
     test "succeeds when input is any combination of ascending 1/2/3/4 with separating plus signs" do
-      for attack_input <- attack_inputs() do
+      for attack_input <- @attack_inputs do
         changeset = Move.changeset(insert(:move), %{input: attack_input})
         assert changeset.valid?
       end
     end
 
     test "succeeds for all valid move inputs followed by a plus and an attack input" do
-      for move_input <- move_inputs() do
+      for move_input <- @move_inputs do
         changeset = Move.changeset(insert(:move), %{input: "#{move_input}+1"})
         assert changeset.valid?
       end
     end
 
     test "succeeds for all valid stances followed by a space and an attack input" do
-      for stance <- stances() do
+      for stance <- @stances do
         changeset = Move.changeset(insert(:move), %{input: "#{stance} 1"})
         assert changeset.valid?
       end
     end
 
     test "succeeds for all valid stances followed by a move input, plus, and an attack input" do
-      for stance <- stances() do
-        for move_input <- move_inputs() do
+      for stance <- @stances do
+        for move_input <- @move_inputs do
           changeset = Move.changeset(insert(:move), %{input: "#{stance} #{move_input}+1"})
           assert changeset.valid?
         end
@@ -129,7 +121,7 @@ defmodule Tekkenframes.MoveTest do
     end
 
     test "succeeds for ewgf" do
-      for attack_input <- attack_inputs() do
+      for attack_input <- @attack_inputs do
         changeset = Move.changeset(insert(:move), %{input: "f, N, d, d/f+#{attack_input}"})
         assert changeset.valid?
       end
@@ -137,47 +129,45 @@ defmodule Tekkenframes.MoveTest do
   end
 
   describe "changeset/2: changing *_frames (excluding start_up_frames)" do
-    def frames_fields do
-      [:on_block_frames, :on_hit_frames, :on_counter_hit_frames]
-    end
+    @frames_fields [:on_block_frames, :on_hit_frames, :on_counter_hit_frames]
 
     test "succeeds when *_frames is a positive number" do
-      for frames_field <- frames_fields() do
+      for frames_field <- @frames_fields do
         changeset = Move.changeset(insert(:move), %{frames_field => "+20"})
         assert changeset.valid?
       end
     end
 
     test "succeeds when *_frames is a negative number" do
-      for frames_field <- frames_fields() do
+      for frames_field <- @frames_fields do
         changeset = Move.changeset(insert(:move), %{frames_field => "-20"})
         assert changeset.valid?
       end
     end
 
     test "succeeds when *_frames is 0" do
-      for frames_field <- frames_fields() do
+      for frames_field <- @frames_fields do
         changeset = Move.changeset(insert(:move), %{frames_field => "0"})
         assert changeset.valid?
       end
     end
 
     test "succeeds when *_frames is 0 to positive number" do
-      for frames_field <- frames_fields() do
+      for frames_field <- @frames_fields do
         changeset = Move.changeset(insert(:move), %{frames_field => "0~+2"})
         assert changeset.valid?
       end
     end
 
     test "succeeds when *_frames is a negative number to 0" do
-      for frames_field <- frames_fields() do
+      for frames_field <- @frames_fields do
         changeset = Move.changeset(insert(:move), %{frames_field => "-2~0"})
         assert changeset.valid?
       end
     end
 
     test "succeeds when *_frames is a negative number to a positive number" do
-      for frames_field <- frames_fields() do
+      for frames_field <- @frames_fields do
         changeset = Move.changeset(insert(:move), %{frames_field => "-2~+2"})
         assert changeset.valid?
       end
