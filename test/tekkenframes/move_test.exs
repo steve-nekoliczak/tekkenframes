@@ -97,21 +97,21 @@ defmodule Tekkenframes.MoveTest do
       end
     end
 
-    test "succeeds for all valid move inputs followed by a plus and an attack input" do
+    test "succeeds when input is a valid move input followed by a plus and an attack input" do
       for move_input <- @move_inputs do
         changeset = Move.changeset(insert(:move), %{input: "#{move_input}+1"})
         assert changeset.valid?
       end
     end
 
-    test "succeeds for all valid stances followed by a space and an attack input" do
+    test "succeeds when input is a valid stance followed by a space and an attack input" do
       for stance <- @stances do
         changeset = Move.changeset(insert(:move), %{input: "#{stance} 1"})
         assert changeset.valid?
       end
     end
 
-    test "succeeds for all valid stances followed by a move input, plus, and an attack input" do
+    test "succeeds when input is a valid stance followed by a space, move input, plus, and an attack input" do
       for stance <- @stances do
         for move_input <- @move_inputs do
           changeset = Move.changeset(insert(:move), %{input: "#{stance} #{move_input}+1"})
@@ -120,7 +120,7 @@ defmodule Tekkenframes.MoveTest do
       end
     end
 
-    test "succeeds for ewgf" do
+    test "succeeds when input is ewgf" do
       for attack_input <- @attack_inputs do
         changeset = Move.changeset(insert(:move), %{input: "f, N, d, d/f+#{attack_input}"})
         assert changeset.valid?
