@@ -1,10 +1,14 @@
 defmodule Tekkenframes.RegexHelper do
-  @stance       "(SS|SSR|SSL|WS|FC|TC|TJ)"
-  @move_input   "(u|u\/f|f|d\/f|d|d\/b|b|u\/b|U|U\/F|F|D\/F|D|D\/B|B|U\/B|N|qcb|qcf|hcb|hcf)"
-  @attack_input "(1|1\\+2|1\\+2\\+3|1\\+2\\+3\\+4|2|2\\+3|2\\+3\\+4|3|3\\+4|4)"
-  @input_entry  "(#{@move_input}|#{@attack_input}|#{@move_input}\\+#{@attack_input})"
-  @input        "(#{@stance} )?#{@input_entry}(, #{@input_entry})*"
-  def input_regex, do: ~r/^#{@move}$/
+  @moduledoc """
+  Regexes to help validate moves. Used in the move model.
+  """
+
+  @stance           "(SS|SSR|SSL|WS|FC|TC|TJ)"
+  @move_input       "(u|u\/f|f|d\/f|d|d\/b|b|u\/b|U|U\/F|F|D\/F|D|D\/B|B|U\/B|qcb|qcf|hcb|hcf)"
+  @attack_input     "(1|1\\+2|1\\+2\\+3|1\\+2\\+3\\+4|1\\+3|1\\+3\\+4|1\\+4|2|2\\+3|2\\+3\\+4|2\\+4|3|3\\+4|4)"
+  @input_entry      "(#{@move_input}|#{@attack_input}|#{@move_input}\\+#{@attack_input})"
+  @input            "(#{@stance} )?#{@input_entry}(, (#{@input_entry}|N))*"
+  def input_regex, do: ~r/^#{@input}$/
 
   def damage_regex, do: ~r/^\d*(, \d*)*$/
 
@@ -16,5 +20,4 @@ defmodule Tekkenframes.RegexHelper do
   def frame_regex, do: ~r/^(#{@frame_entry}(~#{@frame_entry})?|Launch( \(JG\?\))?|Throw|KND)$/
 
   def start_up_regex, do: ~r/^\d+(~\d+)?$/
-
 end

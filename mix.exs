@@ -50,7 +50,9 @@ defmodule Tekkenframes.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:kaffy, "~> 0.9.2"},
-      {:csv, "~> 3.0.4"}
+      {:csv, "~> 3.0.4"},
+      {:ex_machina, "~> 2.7.0", only: :test},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
     ]
   end
 

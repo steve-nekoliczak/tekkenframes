@@ -26,6 +26,7 @@ defmodule TekkenframesWeb.Router do
 
     get "/:game/:character", CharacterController, :index
     get "/:game/:character/:move", MoveController, :index
+    post "/:game/:character/upload_csv", CharacterController, :import_csv
   end
 
   # Other scopes may use custom stacks.

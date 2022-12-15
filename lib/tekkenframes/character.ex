@@ -1,4 +1,8 @@
 defmodule Tekkenframes.Character do
+  @moduledoc """
+  Model for a Tekken character.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -15,5 +19,4 @@ defmodule Tekkenframes.Character do
     |> cast(attrs, [:name])
     |> validate_required([:name])
   end
-
 end
