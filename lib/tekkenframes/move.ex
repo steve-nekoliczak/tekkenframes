@@ -14,10 +14,10 @@ defmodule Tekkenframes.Move do
     field :hit_level, :string
     field :input, :string
     field :notes, :string
-    field :on_block_frame, :string
-    field :on_counter_hit_frame, :string
-    field :on_hit_frame, :string
-    field :start_up_frame, :string
+    field :on_block_frames, :string
+    field :on_counter_hit_frames, :string
+    field :on_hit_frames, :string
+    field :start_up_frames, :string
     field :on_block_effects, :string
     field :on_counter_hit_effects, :string
     field :on_hit_effects, :string
@@ -35,10 +35,10 @@ defmodule Tekkenframes.Move do
     |> validate_format(:input, Regex.input_regex())
     |> validate_format(:damage, Regex.damage_regex())
     |> validate_format(:hit_level, Regex.hit_level_regex())
-    |> validate_format(:on_block_frame, Regex.frame_regex())
-    |> validate_format(:on_counter_hit_frame, Regex.frame_regex())
-    |> validate_format(:on_hit_frame, Regex.frame_regex())
-    |> validate_format(:start_up_frame, Regex.start_up_regex())
+    |> validate_format(:on_block_frames, Regex.frame_regex())
+    |> validate_format(:on_counter_hit_frames, Regex.frame_regex())
+    |> validate_format(:on_hit_frames, Regex.frame_regex())
+    |> validate_format(:start_up_frames, Regex.start_up_regex())
   end
 
   def cast_fields do
@@ -47,10 +47,10 @@ defmodule Tekkenframes.Move do
       :input,
       :hit_level,
       :damage,
-      :start_up_frame,
-      :on_block_frame,
-      :on_hit_frame,
-      :on_counter_hit_frame,
+      :start_up_frames,
+      :on_block_frames,
+      :on_hit_frames,
+      :on_counter_hit_frames,
       :notes,
       :on_block_effects,
       :on_counter_hit_effects,
@@ -66,10 +66,10 @@ defmodule Tekkenframes.Move do
       :input,
       :hit_level,
       :damage,
-      :start_up_frame,
-      :on_block_frame,
-      :on_hit_frame,
-      :on_counter_hit_frame,
+      :start_up_frames,
+      :on_block_frames,
+      :on_hit_frames,
+      :on_counter_hit_frames,
       :version
     ]
   end
