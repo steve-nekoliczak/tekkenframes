@@ -35,9 +35,9 @@ defmodule Tekkenframes.Move do
     |> validate_format(:input, Regex.input_regex())
     |> validate_format(:damage, Regex.damage_regex())
     |> validate_format(:hit_level, Regex.hit_level_regex())
-    |> validate_format(:on_block_frames, Regex.frame_regex())
-    |> validate_format(:on_counter_hit_frames, Regex.frame_regex())
-    |> validate_format(:on_hit_frames, Regex.frame_regex())
+    |> validate_format(:on_block_frames, Regex.frames_regex())
+    |> validate_format(:on_counter_hit_frames, Regex.frames_regex())
+    |> validate_format(:on_hit_frames, Regex.frames_regex())
     |> validate_format(:start_up_frames, Regex.start_up_regex())
   end
 
