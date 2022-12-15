@@ -18,10 +18,10 @@ defmodule Tekkenframes.Move do
     field :on_counter_hit_frame, :string
     field :on_hit_frame, :string
     field :start_up_frame, :string
-    field :on_block_notes, :string
-    field :on_counter_hit_notes, :string
-    field :on_hit_notes, :string
-    field :start_up_notes, :string
+    field :on_block_effects, :string
+    field :on_counter_hit_effects, :string
+    field :on_hit_effects, :string
+    field :start_up_effects, :string
     field :version, :string
 
     timestamps()
@@ -52,10 +52,10 @@ defmodule Tekkenframes.Move do
       :on_hit_frame,
       :on_counter_hit_frame,
       :notes,
-      :on_block_notes,
-      :on_counter_hit_notes,
-      :on_hit_notes,
-      :start_up_notes,
+      :on_block_effects,
+      :on_counter_hit_effects,
+      :on_hit_effects,
+      :start_up_effects,
       :version
     ]
   end
