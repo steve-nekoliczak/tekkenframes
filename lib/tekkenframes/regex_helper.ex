@@ -8,16 +8,21 @@ defmodule Tekkenframes.RegexHelper do
   @attack_input     "(1|1\\+2|1\\+2\\+3|1\\+2\\+3\\+4|1\\+3|1\\+3\\+4|1\\+4|2|2\\+3|2\\+3\\+4|2\\+4|3|3\\+4|4)"
   @input_entry      "(#{@move_input}|#{@attack_input}|#{@move_input}\\+#{@attack_input})"
   @input            "(#{@stance} )?#{@input_entry}(, (#{@input_entry}|N))*"
-  def input_regex, do: ~r/^#{@input}$/
+  @input_regex      ~r/^#{@input}$/
+  def input_regex, do: @input_regex
 
-  def damage_regex, do: ~r/^\d*(, \d*)*$/
+  @damage_regex     ~r/^\d*(, \d*)*$/
+  def damage_regex, do: @damage_regex
 
   @hit_level        "(h|m|l)"
   @hit_level_entry  "#{@hit_level}( \\(#{@stance}\\))?"
-  def hit_level_regex, do: ~r/^(#{@hit_level_entry}(, #{@hit_level_entry})*\!?|\!)$/
+  @hit_level_regex  ~r/^(#{@hit_level_entry}(, #{@hit_level_entry})*\!?|\!)$/
+  def hit_level_regex, do: @hit_level_regex
 
   @frames_entry      "((\\+|\-){1}\\d+|0)"
-  def frames_regex, do: ~r/^(#{@frames_entry}(~#{@frames_entry})?)$/
+  @frames_regex       ~r/^(#{@frames_entry}(~#{@frames_entry})?)$/
+  def frames_regex, do: @frames_regex
 
-  def start_up_regex, do: ~r/^\d+(~\d+)?$/
+  @start_up_regex     ~r/^\d+(~\d+)?$/
+  def start_up_regex, do: @start_up_regex
 end
