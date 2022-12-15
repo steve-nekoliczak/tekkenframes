@@ -135,4 +135,52 @@ defmodule Tekkenframes.MoveTest do
       end
     end
   end
+
+  describe "changeset/2: changing *_frames (excluding start_up_frames)" do
+    def frames_fields do
+      [:on_block_frames, :on_hit_frames, :on_counter_hit_frames]
+    end
+
+    test "succeeds when *_frames is a positive number" do
+      for frames_field <- frames_fields() do
+        changeset = Move.changeset(insert(:move), %{frames_field => "+20"})
+        assert changeset.valid?
+      end
+    end
+
+    test "succeeds when *_frames is a negative number" do
+      for frames_field <- frames_fields() do
+        changeset = Move.changeset(insert(:move), %{frames_field => "+20"})
+        assert changeset.valid?
+      end
+    end
+
+    test "succeeds when *_frames is 0" do
+      for frames_field <- frames_fields() do
+        changeset = Move.changeset(insert(:move), %{frames_field => "0"})
+        assert changeset.valid?
+      end
+    end
+
+    test "succeeds when *_frames is 0 to positive number" do
+      for frames_field <- frames_fields() do
+        changeset = Move.changeset(insert(:move), %{frames_field => "0~+2"})
+        assert changeset.valid?
+      end
+    end
+
+    test "succeeds when *_frames is a negative number to 0" do
+      for frames_field <- frames_fields() do
+        changeset = Move.changeset(insert(:move), %{frames_field => "-2~0"})
+        assert changeset.valid?
+      end
+    end
+
+    test "succeeds when *_frames is a negative number to a positive number" do
+      for frames_field <- frames_fields() do
+        changeset = Move.changeset(insert(:move), %{frames_field => "-2~+2"})
+        assert changeset.valid?
+      end
+    end
+  end
 end
