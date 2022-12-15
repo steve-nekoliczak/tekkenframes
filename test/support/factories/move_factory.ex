@@ -13,9 +13,9 @@ defmodule Tekkenframes.MoveFactory do
       def move_factory do
         %Tekkenframes.Move{
           character: build(:character),
-          damage: "#{Enum.random(1..30)}",
-          hit_level: Enum.random(@hit_levels),
           input: "#{Enum.random(1..4)}",
+          hit_level: Enum.random(@hit_levels),
+          damage: "#{Enum.random(1..30)}",
           start_up_frames: "#{Enum.random(1..200)}",
           on_block_frames: Enum.random(@frames_range),
           on_hit_frames: Enum.random(@frames_range),

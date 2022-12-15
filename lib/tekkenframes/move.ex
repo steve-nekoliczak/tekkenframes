@@ -10,10 +10,9 @@ defmodule Tekkenframes.Move do
 
   schema "moves" do
     belongs_to :character, Tekkenframes.Character
-    field :damage, :string
-    field :hit_level, :string
     field :input, :string
-    field :notes, :string
+    field :hit_level, :string
+    field :damage, :string
     field :start_up_frames, :string
     field :start_up_effects, :string
     field :on_block_frames, :string
@@ -22,6 +21,7 @@ defmodule Tekkenframes.Move do
     field :on_hit_effects, :string
     field :on_counter_hit_frames, :string
     field :on_counter_hit_effects, :string
+    field :notes, :string
     field :version, :string
 
     timestamps()
@@ -33,12 +33,12 @@ defmodule Tekkenframes.Move do
     |> cast(attrs, cast_fields())
     |> validate_required(validate_required_fields())
     |> validate_format(:input, Regex.input_regex())
-    |> validate_format(:damage, Regex.damage_regex())
     |> validate_format(:hit_level, Regex.hit_level_regex())
-    |> validate_format(:on_block_frames, Regex.frames_regex())
-    |> validate_format(:on_counter_hit_frames, Regex.frames_regex())
-    |> validate_format(:on_hit_frames, Regex.frames_regex())
+    |> validate_format(:damage, Regex.damage_regex())
     |> validate_format(:start_up_frames, Regex.start_up_regex())
+    |> validate_format(:on_block_frames, Regex.frames_regex())
+    |> validate_format(:on_hit_frames, Regex.frames_regex())
+    |> validate_format(:on_counter_hit_frames, Regex.frames_regex())
   end
 
   def cast_fields do
@@ -48,14 +48,14 @@ defmodule Tekkenframes.Move do
       :hit_level,
       :damage,
       :start_up_frames,
-      :on_block_frames,
-      :on_hit_frames,
-      :on_counter_hit_frames,
-      :notes,
-      :on_block_effects,
-      :on_counter_hit_effects,
-      :on_hit_effects,
       :start_up_effects,
+      :on_block_frames,
+      :on_block_effects,
+      :on_hit_frames,
+      :on_hit_effects,
+      :on_counter_hit_frames,
+      :on_counter_hit_effects,
+      :notes,
       :version
     ]
   end
