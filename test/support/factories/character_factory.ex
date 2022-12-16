@@ -7,7 +7,7 @@ defmodule Tekkenframes.CharacterFactory do
 
   defmacro __using__(_opts) do
     quote do
-      @names ["Heihachi", "Kazuya", "Jin"]
+      @names ~W<Heihachi Kazuya Jin>
 
       def character_factory do
         %Tekkenframes.Character{

@@ -42,35 +42,35 @@ defmodule Tekkenframes.Move do
   end
 
   def cast_fields do
-    [
-      :character_id,
-      :input,
-      :hit_level,
-      :damage,
-      :start_up_frames,
-      :start_up_effects,
-      :on_block_frames,
-      :on_block_effects,
-      :on_hit_frames,
-      :on_hit_effects,
-      :on_counter_hit_frames,
-      :on_counter_hit_effects,
-      :notes,
-      :version
-    ]
+    ~W<
+      character_id
+      input
+      hit_level
+      damage
+      start_up_frames
+      start_up_effects
+      on_block_frames
+      on_block_effects
+      on_hit_frames
+      on_hit_effects
+      on_counter_hit_frames
+      on_counter_hit_effects
+      notes
+      version
+    >a
   end
 
   def validate_required_fields do
-    [
-      :character_id,
-      :input,
-      :hit_level,
-      :damage,
-      :start_up_frames,
-      :on_block_frames,
-      :on_hit_frames,
-      :on_counter_hit_frames,
-      :version
-    ]
+    ~W<
+      character_id
+      input
+      hit_level
+      damage
+      start_up_frames
+      on_block_frames
+      on_hit_frames
+      on_counter_hit_frames
+      version
+    >a
   end
 end

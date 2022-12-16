@@ -7,8 +7,8 @@ defmodule Tekkenframes.MoveFactory do
 
   defmacro __using__(_opts) do
     quote do
-      @hit_levels ["h", "m", "l"]
-      @frames_range ["-100", "-20", "-15", "-10", "-5", "0", "5", "10", "15", "20", "100"]
+      @hit_levels ~W<h m l>
+      @frames_range ~W<-100 -20 -15 -10 -5 0 5 10 15 20 100>
 
       def move_factory do
         %Tekkenframes.Move{

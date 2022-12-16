@@ -16,7 +16,7 @@ defmodule Tekkenframes.Character do
   @doc false
   def changeset(move, attrs) do
     move
-    |> cast(attrs, [:name])
-    |> validate_required([:name])
+    |> cast(attrs, ~W<name>a)
+    |> validate_required(~W<name>a)
   end
 end
