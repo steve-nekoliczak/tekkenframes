@@ -4,7 +4,7 @@ defmodule Tekkenframes.RegexHelper do
   """
 
   @stance           ~S/(SS|SSR|SSL|WS|FC|TC|TJ)/
-  @move_input       ~S((u|u/f|f|d/f|d|d/b|b|u/b|U|U/F|F|D/F|D|D/B|B|U/B|qcb|qcf|hcb|hcf\))
+  @move_input       ~S<(u|u/f|f|d/f|d|d/b|b|u/b|U|U/F|F|D/F|D|D/B|B|U/B|qcb|qcf|hcb|hcf)>
   @attack_input     ~S/(1|1\+2|1\+2\+3|1\+2\+3\+4|1\+3|1\+3\+4|1\+4|2|2\+3|2\+3\+4|2\+4|3|3\+4|4)/
   @input_entry      ~s/(#{@move_input}|#{@attack_input}|#{@move_input}\\+#{@attack_input})/
   @input            ~s/(#{@stance} )?#{@input_entry}(, (#{@input_entry}|N))*/
