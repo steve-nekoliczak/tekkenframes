@@ -86,9 +86,9 @@ defmodule Tekkenframes.MoveTest do
   end
 
   describe "changeset/2: changing input" do
-    @attack_inputs ["1", "1+2", "1+2+3", "1+2+3+4", "1+3", "1+3+4", "1+4", "2", "2+3", "2+3+4", "2+4", "3", "3+4", "4"]
-    @move_inputs ["u", "u/f", "f", "d/f", "d", "d/b", "b", "u/b", "U", "U/F", "F", "D/F", "D", "D/B", "B", "U/B", "qcb", "qcf", "hcb", "hcf"]
-    @stances ["SS", "SSR", "SSL", "WS", "FC", "TC", "TJ"]
+    @attack_inputs ~W<1 1+2 1+2+3 1+2+3+4 1+3 1+3+4 1+4 2 2+3 2+3+4 2+4 3 3+4 4>
+    @move_inputs ~W<u u/f f d/f d d/b b u/b U U/F F D/F D D/B B U/B qcb qcf hcb hcf>
+    @stances ~W<SS SSR SSL WS FC TC TJ>
 
     test "succeeds when input is any combination of ascending 1/2/3/4 with separating plus signs" do
       for attack_input <- @attack_inputs do
@@ -129,7 +129,7 @@ defmodule Tekkenframes.MoveTest do
   end
 
   describe "changeset/2: changing *_frames (excluding start_up_frames)" do
-    @frames_fields [:on_block_frames, :on_hit_frames, :on_counter_hit_frames]
+    @frames_fields ~W<on_block_frames on_hit_frames on_counter_hit_frames>a
 
     test "succeeds when *_frames is a positive number" do
       for frames_field <- @frames_fields do
