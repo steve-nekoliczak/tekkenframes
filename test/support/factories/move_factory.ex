@@ -7,16 +7,19 @@ defmodule Tekkenframes.MoveFactory do
 
   defmacro __using__(_opts) do
     quote do
+      @hit_levels ~W<h m l>
+      @frames_range ~W<-100 -20 -15 -10 -5 0 5 10 15 20 100>
+
       def move_factory do
         %Tekkenframes.Move{
           character: build(:character),
-          damage: "10",
-          hit_level: "h",
-          input: "1",
-          on_block_frame: "+1",
-          on_counter_hit_frame: "-1",
-          on_hit_frame: "+2",
-          start_up_frame: "10",
+          input: "#{Enum.random(1..4)}",
+          hit_level: Enum.random(@hit_levels),
+          damage: "#{Enum.random(1..30)}",
+          start_up_frames: "#{Enum.random(1..200)}",
+          on_block_frames: Enum.random(@frames_range),
+          on_hit_frames: Enum.random(@frames_range),
+          on_counter_hit_frames: Enum.random(@frames_range),
           version: "5.00"
         }
       end

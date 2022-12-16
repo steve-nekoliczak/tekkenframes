@@ -7,9 +7,11 @@ defmodule Tekkenframes.CharacterFactory do
 
   defmacro __using__(_opts) do
     quote do
+      @names ~W<Heihachi Kazuya Jin>
+
       def character_factory do
         %Tekkenframes.Character{
-          name: "Heihachi",
+          name: Enum.random(@names),
         }
       end
     end
