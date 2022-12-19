@@ -23,6 +23,8 @@ defmodule Tekkenframes.RegexHelper do
   @frames_regex     ~r<^(#{@frames_entry}( - #{@frames_entry})?)$>
   def frames_regex, do: @frames_regex
 
+  def effects_regex, do: ~r<^(Knockdown|Launch|Crouch|Throw)$>
+
   @start_up_regex   ~R<^\d+( - \d+)?$>
   def start_up_regex, do: @start_up_regex
 end
