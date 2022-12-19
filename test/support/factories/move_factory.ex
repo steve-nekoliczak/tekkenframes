@@ -18,8 +18,11 @@ defmodule Tekkenframes.MoveFactory do
           damage: "#{Enum.random(1..30)}",
           start_up_frames: "#{Enum.random(1..200)}",
           on_block_frames: Enum.random(@frames_range),
+          on_block_effects: "",
           on_hit_frames: Enum.random(@frames_range),
+          on_hit_effects: "",
           on_counter_hit_frames: Enum.random(@frames_range),
+          on_counter_hit_effects: "",
           version: "5.00"
         }
       end

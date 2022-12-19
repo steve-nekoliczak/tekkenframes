@@ -180,4 +180,18 @@ defmodule Tekkenframes.MoveTest do
       end
     end
   end
+
+  describe "changeset/2: changing *_effects" do
+    @effects_fields ~W<on_block_effects on_hit_effects on_counter_hit_effects>
+    @effects ~W<Knockdown Launch Crouch Throw>
+
+    test "succeeds when *_effects is a valid effect" do
+      for effects_field <- @effects_fields do
+        for effect <- @effects do
+          changeset = Move.changeset(insert(:move), %{effects_field => effect})
+          assert changeset.valid?
+        end
+      end
+    end
+  end
 end
