@@ -37,8 +37,11 @@ defmodule Tekkenframes.Move do
     |> validate_format(:damage, Regex.damage_regex())
     |> validate_format(:start_up_frames, Regex.start_up_regex())
     |> validate_format(:on_block_frames, Regex.frames_regex())
+    |> validate_format(:on_block_effects, Regex.effects_regex())
     |> validate_format(:on_hit_frames, Regex.frames_regex())
+    |> validate_format(:on_hit_effects, Regex.effects_regex())
     |> validate_format(:on_counter_hit_frames, Regex.frames_regex())
+    |> validate_format(:on_counter_hit_effects, Regex.effects_regex())
   end
 
   def cast_fields do
