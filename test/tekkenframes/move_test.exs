@@ -161,21 +161,21 @@ defmodule Tekkenframes.MoveTest do
 
     test "succeeds when *_frames is 0 to positive number" do
       for frames_field <- @frames_fields do
-        changeset = Move.changeset(insert(:move), %{frames_field => "0~+2"})
+        changeset = Move.changeset(insert(:move), %{frames_field => "0 - +2"})
         assert changeset.valid?
       end
     end
 
     test "succeeds when *_frames is a negative number to 0" do
       for frames_field <- @frames_fields do
-        changeset = Move.changeset(insert(:move), %{frames_field => "-2~0"})
+        changeset = Move.changeset(insert(:move), %{frames_field => "-2 - 0"})
         assert changeset.valid?
       end
     end
 
     test "succeeds when *_frames is a negative number to a positive number" do
       for frames_field <- @frames_fields do
-        changeset = Move.changeset(insert(:move), %{frames_field => "-2~+2"})
+        changeset = Move.changeset(insert(:move), %{frames_field => "-2 - +2"})
         assert changeset.valid?
       end
     end

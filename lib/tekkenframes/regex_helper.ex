@@ -20,9 +20,9 @@ defmodule Tekkenframes.RegexHelper do
   def hit_level_regex, do: @hit_level_regex
 
   @frames_entry     ~S<((\+|-){1}\d+|0)>
-  @frames_regex     ~r<^(#{@frames_entry}(~#{@frames_entry})?)$>
+  @frames_regex     ~r<^(#{@frames_entry}( - #{@frames_entry})?)$>
   def frames_regex, do: @frames_regex
 
-  @start_up_regex   ~R<^\d+(~\d+)?$>
+  @start_up_regex   ~R<^\d+( - \d+)?$>
   def start_up_regex, do: @start_up_regex
 end
