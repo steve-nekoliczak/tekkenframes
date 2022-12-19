@@ -97,6 +97,13 @@ defmodule Tekkenframes.MoveTest do
       end
     end
 
+    test "succeeds when input is any combination of ascending 1/2/3/4 with separating plus signs followed by a tilde to indicate a roll input" do
+      for attack_input <- @attack_inputs do
+        changeset = Move.changeset(insert(:move), %{input: "#{attack_input}~#{attack_input}"})
+        assert changeset.valid?
+      end
+    end
+
     test "succeeds when input is a valid move input followed by a plus and an attack input" do
       for move_input <- @move_inputs do
         changeset = Move.changeset(insert(:move), %{input: "#{move_input}+1"})
