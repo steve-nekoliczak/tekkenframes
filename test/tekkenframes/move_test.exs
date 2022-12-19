@@ -119,11 +119,9 @@ defmodule Tekkenframes.MoveTest do
     end
 
     test "succeeds when input is a valid stance followed by a space, move input, plus, and an attack input" do
-      for stance <- @stances do
-        for move_input <- @move_inputs do
-          changeset = Move.changeset(insert(:move), %{input: "#{stance} #{move_input}+1"})
-          assert changeset.valid?
-        end
+      for stance <- @stances, move_input <- @move_inputs do
+        changeset = Move.changeset(insert(:move), %{input: "#{stance} #{move_input}+1"})
+        assert changeset.valid?
       end
     end
 
@@ -186,11 +184,9 @@ defmodule Tekkenframes.MoveTest do
     @effects ~W<Knockdown Launch Crouch Throw>
 
     test "succeeds when *_effects is a valid effect" do
-      for effects_field <- @effects_fields do
-        for effect <- @effects do
-          changeset = Move.changeset(insert(:move), %{effects_field => effect})
-          assert changeset.valid?
-        end
+      for effects_field <- @effects_fields, effect <- @effects do
+        changeset = Move.changeset(insert(:move), %{effects_field => effect})
+        assert changeset.valid?
       end
     end
   end
