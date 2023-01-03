@@ -42,6 +42,7 @@ defmodule Tekkenframes.Move do
     |> validate_format(:on_hit_effects, Regex.effects_regex())
     |> validate_format(:on_counter_hit_frames, Regex.frames_regex())
     |> validate_format(:on_counter_hit_effects, Regex.effects_regex())
+    |> unique_constraint([:character_id, :input])
   end
 
   def cast_fields do
