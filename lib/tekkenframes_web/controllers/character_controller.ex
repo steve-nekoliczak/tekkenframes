@@ -1,5 +1,6 @@
 defmodule TekkenframesWeb.CharacterController do
   use TekkenframesWeb, :controller
+  alias Tekkenframes.{Repo, Character}
   import CSV
 
   def index(conn, params) do
@@ -8,21 +9,20 @@ defmodule TekkenframesWeb.CharacterController do
   end
 
   def import_csv(conn, params) do
-    output = get_values(params["file"].path)
+    output = insert_moves_from_csv(params["file"].path, params["character_name"])
     # IO.inspect(conn, label: "conn")
-    # json(conn, params["file"].path)
+    # TODO return http code and body with errors
     json(conn, "sup")
   end
 
-  def get_values(path) do
-    # TODO move to model, add moves to database, return errors
-    Path.expand(path)
+  def insert_moves_from_csv(csv_path, character_name) do
+    Path.expand(csv_path)
     |> File.stream!()
     |> CSV.decode(headers: true)
-    |> Enum.map(fn move ->
-      {:ok, fields} = move
-      IO.inspect(move, label: "move")
-      # |> Repo.insert
+    |> Enum.map(fn row ->
+      {:ok, move} = row
+      Repo.get_by(Character, name: character_name)
+        |> Character.add_move(move)
     end)
   end
 end
